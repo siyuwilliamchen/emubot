@@ -1,7 +1,6 @@
 import discord
 import os
 from discord.ext import commands, tasks
-
 """
 WORK IN PROGRESS
 author: William Chen
@@ -12,8 +11,10 @@ PROJECT TO-DO list:
 3) Other functions
 
 """
-
 PATH = os.path.dirname(__file__)
+TOKEN = None
+with open(PATH + '/tkinfo.txt', 'r') as f:
+	TOKEN = f.read()
 print(PATH)
 client = commands.Bot(command_prefix = ';')
 client.remove_command('help')
@@ -60,4 +61,4 @@ for filename in os.listdir(PATH + '/cogs'):
 	if filename.endswith('.py'):
 		client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run('NzQyNDc1NDkxNjEyNTU3MzU0.XzGqLw.sjkn0U0Vii3ebyP7HzhcXQ1ol84')
+client.run(TOKEN)
