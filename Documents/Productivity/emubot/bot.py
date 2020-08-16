@@ -15,11 +15,10 @@ PATH = os.path.dirname(__file__)
 TOKEN = None
 with open(PATH + '/tkinfo.txt', 'r') as f:
 	TOKEN = f.read()
-print(PATH)
 client = commands.Bot(command_prefix = ';')
 client.remove_command('help')
 
-version = '0.1.2'
+version = '0.1.3'
 @client.event
 async def on_ready():
 	print(f"Emu Bot is ready... v {version}")
@@ -37,6 +36,9 @@ async def about(ctx):
 		)
 	display.add_field(
 		name = 'v0.1.2', value = 'Changed user menu when entering schedule. Added protection to individual schedule files'
+		)
+	display.add_field(
+		name = 'v0.1.3', value = 'Secured token. Bot ready for remote repository'
 		)
 	ctx.channel.send(f'Current version: {version}')
 	await ctx.channel.send(embed = display)
