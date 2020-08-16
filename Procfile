@@ -1,1 +1,1 @@
-worker: python bot.py
+worker: python emubot/bot.py
