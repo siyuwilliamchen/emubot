@@ -1,1 +1,1 @@
-worker: python emubot/bot.py
+worker: python emubot/Documents/Productivity/emubots/bot.py
