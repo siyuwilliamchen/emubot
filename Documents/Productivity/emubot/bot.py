@@ -12,10 +12,6 @@ PROJECT TO-DO list:
 
 """
 PATH = os.path.dirname(__file__)
-TOKEN = None
-with open(PATH + '/tkinfo.txt', 'r') as f:
-	TOKEN = f.read()
-client = commands.Bot(command_prefix = ';')
 client.remove_command('help')
 
 version = '0.1.3'
@@ -63,4 +59,4 @@ for filename in os.listdir(PATH + '/cogs'):
 	if filename.endswith('.py'):
 		client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run(TOKEN)
+client.run(os.environ(['DISCORD_TOKEN']))
