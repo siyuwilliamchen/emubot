@@ -15,7 +15,7 @@ client = commands.Bot(command_prefix = ';')
 PATH = os.path.dirname(__file__)
 client.remove_command('help')
 
-version = '0.1.3'
+version = '0.1.4'
 @client.event
 async def on_ready():
 	print(f"Emu Bot is ready... v {version}")
@@ -25,19 +25,9 @@ async def about(ctx):
 	display = discord.Embed(
 		author = 'William Chen',
 		colour = discord.Colour.blue(),
-		title = f'Current Version: v{version}',
-		description = 'Alpha testing version'
+		title = 'Developed by William Chen',
+		description = f'Current Version: v{version}'
 		)
-	display.add_field(
-		name = 'v0.1.1', value = 'Fixed bugs.'
-		)
-	display.add_field(
-		name = 'v0.1.2', value = 'Changed user menu when entering schedule. Added protection to individual schedule files'
-		)
-	display.add_field(
-		name = 'v0.1.3', value = 'Secured token. Bot ready for remote repository'
-		)
-	ctx.channel.send(f'Current version: {version}')
 	await ctx.channel.send(embed = display)
 
 @client.command()
