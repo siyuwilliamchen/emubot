@@ -25,7 +25,7 @@ class scheduleProcessor(commands.Cog):
 
 	def __init__(self, client):
 		self.client = client
-		self.timetable = [845, 930, 1015, 1100, 1145, 1230, 1315, 1400, 1445]
+		self.timetable = [840, 925, 1010, 1055, 1140, 1225, 1310, 1355, 1440]
 		self.signups = self.loadSignups()
 		self.inZoom = False
 		self.inTeacher = False
@@ -51,7 +51,7 @@ class scheduleProcessor(commands.Cog):
 		with open(f'{PATH}/lib/signups.txt', 'r') as f:
 			return json.load(f)
 
-	@tasks.loop(seconds = 60)
+	@tasks.loop(seconds = 61)
 	async def checkSched(self):
 		for signup in self.signups:
 			if self.findScheduleInstance(signup):
