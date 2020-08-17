@@ -15,7 +15,7 @@ client = commands.Bot(command_prefix = ';')
 PATH = os.path.dirname(__file__)
 client.remove_command('help')
 
-version = '0.1.4'
+version = '0.1.5'
 @client.event
 async def on_ready():
 	print(f"Emu Bot is ready... v {version}")
