@@ -51,19 +51,19 @@ class scheduleProcessor(commands.Cog):
 		with open(f'{PATH}/lib/signups.txt', 'r') as f:
 			return json.load(f)
 
-	@tasks.loop(seconds = 30)
+	@tasks.loop(seconds = 60)
 	async def checkSched(self):
 		for signup in self.signups:
 			if self.findScheduleInstance(signup):
 				await self.remind(self.findScheduleInstance(signup), signup)
 
 	async def remind(self, schedule, userid):
-		currDate = datetime.date.today()
-		currTime = datetime.datetime.now()
-		if currDate.weekday() <= 6:
+		currTimeUTC = datetime.datetime.utcnow()
+		currTime = currTimeUTC - datetime.timedelta(hours = 7)
+		if currTime.weekday() <= 4:
 		 	for period in schedule.periods:
 		 		if period.period < 9:
-		 			if currTime.hour == (self.timetable[period.period] / 100) and currTime.minute == (self.timetable[period.period] % 100):
+		 			if currTime.hour == (self.timetable[period.period] // 100) and currTime.minute == (self.timetable[period.period] % 100):
 		 				await self.client.get_user(userid).send(f'Hey, you have {period.period} period: {period.name} right now, the zoom link is {period.zoomlink}, if you would like disable this remind, type ;remindOff, if you want to update your zoom meetings, type ;zoom <period> <link>')
 
 	@commands.command(aliases = ['remind', 'remindme'])
